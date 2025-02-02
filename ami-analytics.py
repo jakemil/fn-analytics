@@ -33,3 +33,11 @@ functs.calculate_averages_and_failures(cs15_df, flight_dfs, "AMI 1", "AMI 1")
 
 # Calculate for "AMI 2"
 functs.calculate_averages_and_failures(cs15_df, flight_dfs, "AMI 2", "AMI 2")
+
+top_three_ami1_infractions = functs.get_top_column_titles_with_most_xs(ami1_df)
+print("The top three infractions for AMI 1 are:")
+print(top_three_ami1_infractions)
+
+top_three_ami2_infractions = functs.get_top_column_titles_with_most_xs(ami2_df)
+print("The top three infractions for AMI 2 are:")
+print(top_three_ami2_infractions)
