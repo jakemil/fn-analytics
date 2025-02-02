@@ -5,12 +5,14 @@ import pandas as pd
 # Replace 'your_excel_file.xlsx' with the file path to your Excel file.
 file_path = '/home/jake-miller/fn-analytics/fn-data/data-export.xlsx'
 staff_path = '/home/jake-miller/fn-analytics/fn-data/CS15-Staffs.xlsx'
-
+ktest_path = '/home/jake-miller/fn-analytics/fn-data/ktests.xlsx'
 # Read all sheets into a dictionary of DataFrames
 sheets_dict = pd.read_excel(file_path, sheet_name=None, engine='openpyxl')
 staff_dict = pd.read_excel(staff_path, sheet_name=None, engine='openpyxl')
+ktests_dict = pd.read_excel(ktest_path, sheet_name=None, engine='openpyxl')
 
 # Access each sheet by its name
+ktest_df = ktests_dict["Scores"]
 cs15_df = sheets_dict["CS15"]
 ami1_df = sheets_dict["AMI 1"]
 ami2_df = sheets_dict["AMI 2"]
@@ -41,3 +43,7 @@ print(top_three_ami1_infractions)
 top_three_ami2_infractions = functs.get_top_column_titles_with_most_xs(ami2_df)
 print("The top three infractions for AMI 2 are:")
 print(top_three_ami2_infractions)
+
+failures = functs.get_ktest_fails(ktest_df, "Spring K-Test #1 (January 22, 2025) [Total Pts: 35 Percentage] |393089")
+for name, count in failures.items():
+    print(f"{name} failed the most recent ktest and {count} previous ktests.")

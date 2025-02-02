@@ -1,0 +1,20 @@
+AMI 1 Average: 90.57
+AMI 1 Alpha Average: 88.60
+AMI 1 Bravo Average: 91.45
+AMI 1 Charlie Average: 90.44
+AMI 1 Astaff Average: 92.17
+AMI 2 Average: 92.83
+AMI 2 Alpha Average: 90.00
+AMI 2 Bravo Average: 96.42
+AMI 2 Charlie Average: 94.74
+AMI 2 Astaff Average: 91.52
+The top three infractions for AMI 1 are:
+Valet Area: All Surfaces Clean (Mirror, Counter, Sink, Faucet) (-4)                                       16
+Desks: Memorabilia Neatly Displayed on Shelves Only (# of items is not an issue) (-4)                     16
+Valet Area: Inside of Cabinets Neatly Displayed (Mirror and Under Sink, Laundry in basket or bag) (-4)    12
+dtype: int64
+The top three infractions for AMI 2 are:
+Desks: Memorabilia Neatly Displayed on Shelves Only (# of items is not an issue) (-4)                     22
+Valet Area: Inside of Cabinets Neatly Displayed (Mirror and Under Sink, Laundry in basket or bag) (-4)    13
+Valet Area: All Surfaces Clean (Mirror, Counter, Sink, Faucet) (-4)                                       11
+dtype: int64

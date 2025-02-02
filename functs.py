@@ -69,3 +69,48 @@ def get_top_column_titles_with_most_xs(df):
     top_columns = column_x_counts.sort_values(ascending=False).head(3)
 
     return top_columns
+
+
+def get_ktest_fails(df, ktest_name):
+    """
+    Finds rows where the score in the `ktest_name` column is less than 80.
+    For those rows (people), sums all the scores less than 80 in the columns from 6
+    to the column with `ktest_name`, and returns their name and the count of such scores.
+
+    Args:
+        df (pd.DataFrame): The input DataFrame, assumed to have a column for names.
+        ktest_name (str): The name of the column to check for the threshold (< 80).
+
+    Returns:
+        dict: A dictionary where keys are names and values are the sums of scores < 80 in the relevant range.
+    """
+    # Ensure the ktest_name column exists
+    if ktest_name not in df.columns:
+        raise ValueError(f"Column '{ktest_name}' not found in the DataFrame.")
+
+    # Dynamically get the index of the ktest_name column
+    ktest_col_index = df.columns.get_loc(ktest_name)
+
+    # Filter rows where the score in the ktest_name column is less than 80
+    failing_people = df[df[ktest_name] < 80]
+
+    # Initialize the result dictionary
+    result = {}
+
+    # Loop through each person who failed the ktest
+    for _, row in failing_people.iterrows():
+        # Get their name (assuming the name column is the first column, i.e., index 0)
+        person_name = row["Last Name"]
+
+        # Select columns from 5 through ktest_name (inclusive)
+        relevant_scores = row.iloc[5: ktest_col_index + 1]
+
+        # Count the number of scores less than 80 for this person
+        num_scores_below_80 = (relevant_scores < 80).sum()
+
+        # Add to the result dictionary
+        result[person_name] = num_scores_below_80
+
+    return result
+
+
