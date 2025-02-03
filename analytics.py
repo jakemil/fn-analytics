@@ -47,3 +47,5 @@ print(top_three_ami2_infractions)
 failures = functs.get_ktest_fails(ktest_df, "Spring K-Test #1 (January 22, 2025) [Total Pts: 35 Percentage] |393089")
 for name, count in failures.items():
     print(f"{name} failed the most recent ktest and {count} previous ktests.")
+
+functs.get_ktest_averages(ktest_df, flight_dfs, "Spring K-Test #1 (January 22, 2025) [Total Pts: 35 Percentage] |393089")

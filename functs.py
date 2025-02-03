@@ -113,4 +113,11 @@ def get_ktest_fails(df, ktest_name):
 
     return result
 
-
+def get_ktest_averages(ktest_df, flight_dfs, ktest_name):
+    # Calculate flight averages
+    squad_average = ktest_df[ktest_name].mean()
+    print("The average score for the squad is: ", squad_average)
+    for flight_name, flight_df in flight_dfs.items():
+        flight_subset = ktest_df[ktest_df['Last Name'].isin(flight_df["Name"].apply(lambda x: x.split()[-1]))]
+        flight_average = flight_subset[ktest_name].mean()
+        print(f"{flight_name.title()} K-Test Average: {flight_average:.2f}")
