@@ -66,7 +66,7 @@ def get_top_column_titles_with_most_xs(df):
     column_x_counts = columns_10_to_29.apply(lambda col: (col == "X").sum(), axis=0)
 
     # Sort columns by count in descending order and pick the top three
-    top_columns = column_x_counts.sort_values(ascending=False).head(3)
+    top_columns = column_x_counts.sort_values(ascending=False).head(5)
 
     return top_columns
 
@@ -121,3 +121,5 @@ def get_ktest_averages(ktest_df, flight_dfs, ktest_name):
         flight_subset = ktest_df[ktest_df['Last Name'].isin(flight_df["Name"].apply(lambda x: x.split()[-1]))]
         flight_average = flight_subset[ktest_name].mean()
         print(f"{flight_name.title()} K-Test Average: {flight_average:.2f}")
+
+
