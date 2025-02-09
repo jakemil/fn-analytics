@@ -45,6 +45,7 @@ def calculate_averages_and_failures(cs15_df, flight_dfs, column_name, title_pref
     # Calculate flight averages
     for flight_name, flight_df in flight_dfs.items():
         flight_subset = cs15_df[cs15_df['Name'].isin(flight_df["Name"])]
+        output_table_as_image(flight_subset[['Name', column_name]], title=f"{title_prefix} {flight_name.title()}", file_name=f"outputs/{title_prefix.replace(' ', '_')}_{flight_name}.png")
         flight_average = flight_subset[column_name].mean()
         print(f"{title_prefix} {flight_name.title()} Average: {flight_average:.2f}")
 
