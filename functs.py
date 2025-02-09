@@ -33,9 +33,10 @@ def calculate_averages_and_failures(cs15_df, flight_dfs, column_name, title_pref
     # Find all fails for the given column
     failing_rooms = cs15_df[cs15_df[column_name] < 80]
     fails_df = failing_rooms[["Name", column_name]]
-    output_table_as_image(
-        fails_df, title=f"{title_prefix} Failures", file_name=f"outputs/{title_prefix.replace(' ', '_')}_fails.png"
-    )
+    if(failing_rooms is not None and len(failing_rooms) > 0):
+        output_table_as_image(
+            fails_df, title=f"{title_prefix} Failures", file_name=f"outputs/{title_prefix.replace(' ', '_')}_fails.png"
+        )
 
     # Calculate squadron average for the given column
     squadron_average = cs15_df[column_name].mean()
